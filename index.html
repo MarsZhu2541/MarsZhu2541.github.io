@@ -1,52 +1,563 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>帽子游戏</title>
+    <!-- 页面meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
 
-    <!-- 引入样式 -->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <!-- 引入组件库 -->
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-    
+    <title>云顶之奕数据可视化网站</title>
+    <meta name="description" content="AdminLTE2定制版">
+    <meta name="keywords" content="AdminLTE2定制版">
+
+
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+   
+    <script src="static/plugins/js/vue3.js"></script>
+
+    <link rel="stylesheet" href="static/plugins/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/plugins/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/plugins/css/ionicons.min.css">
+    <link rel="stylesheet" href="static/plugins/css/blue.css">
+    <link rel="stylesheet" href="static/plugins/css/morris.css">
+    <link rel="stylesheet" href="static/plugins/css/jquery-jvectormap-1.2.2.css">
+    <link rel="stylesheet" href="static/plugins/css/datepicker3.css">
+    <link rel="stylesheet" href="static/plugins/css/daterangepicker.css">
+    <link rel="stylesheet" href="static/plugins/css/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="static/plugins/css/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="static/plugins/css/jquery.treetable.css">
+    <link rel="stylesheet" href="static/plugins/css/jquery.treetable.theme.default.css">
+    <link rel="stylesheet" href="static/plugins/css/select2.css">
+    <link rel="stylesheet" href="static/plugins/css/bootstrap-colorpicker.min.css">
+    <link rel="stylesheet" href="static/plugins/css/bootstrap-markdown.min.css">
+    <link rel="stylesheet" href="static/plugins/css/AdminLTE.css">
+    <link rel="stylesheet" href="static/plugins/css/_all-skins.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/plugins/css/ion.rangeSlider.css">
+    <link rel="stylesheet" href="static/plugins/css/ion.rangeSlider.skinNice.css">
+    <link rel="stylesheet" href="static/plugins/css/slider.css">
+    <link rel="stylesheet" href="static/plugins/css/bootstrap-datetimepicker.css">
 </head>
 
-<body>
-    <center>
-        <h1>帽 子 游 戏</h1>
-        <div id="app">
-            <div style="width: 20%;">
-                <el-input v-model="n" placeholder="请输入n"></el-input>
-                <el-input v-model="k" placeholder="请输入k" style="margin-top: 10px; "></el-input>
-                <el-button @click='conf' style="margin-top: 20px; " type="success">  确认</el-button>
-            </div>
-            <p>{{text}}</p>
-            <el-container style="height: 500px; margin-top: 20px; border: 1px solid #eee">
-                <el-container>
-                    <el-main>
-                        <el-table :data="tableData">
-                            <el-table-column 
-                            type="index"
-                            width="50">
-                          </el-table-column>
-                            <el-table-column prop="numA" label="A" width="140">
-                            </el-table-column>
-                            <el-table-column prop="numB" label="B" width="140">
-                            </el-table-column>
-                            <el-table-column prop="numC" label="C" width="140">
-                            </el-table-column>
-                        </el-table>
-                    </el-main>
-                </el-container>
-            </el-container>
-        </div>
-    </center>
-   <script src="js/main.js"></script>
+<body class="hold-transition skin-purple sidebar-mini">
 
+<div class="wrapper">
+
+    <!-- 页面头部 -->
+    <header class="main-header">
+
+
+        <!-- Logo -->
+        <a href="all-admin-index.html" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>云顶之奕</b></span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>云顶之奕数据可视化</b></span>
+        </a>
+
+
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- Messages: style can be found in dropdown.less-->
+                    <li class="dropdown messages-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="label label-success">4</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">你有4个邮件</li>
+                            <li>
+                                <!-- inner menu: contains the actual data -->
+                                <ul class="menu">
+                                    <li>
+                                        <!-- start message -->
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <img src="static/img/yasuo.jpg" class="img-circle"
+                                                     alt="User Image">
+                                            </div>
+                                            <h4>
+                                                系统消息
+                                                <small><i class="fa fa-clock-o"></i> 5 分钟前</small>
+                                            </h4>
+                                            <p>欢迎登录系统?</p>
+                                        </a>
+                                    </li>
+                                    <!-- end message -->
+                                    <li>
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <img src="static/img/yasuo.jpg" class="img-circle"
+                                                     alt="User Image">
+                                            </div>
+                                            <h4>
+                                                团队消息
+                                                <small><i class="fa fa-clock-o"></i> 2 小时前</small>
+                                            </h4>
+                                            <p>你有新的任务了</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <img src="static/img/yasuo.jpg" class="img-circle"
+                                                     alt="User Image">
+                                            </div>
+                                            <h4>
+                                                Developers
+                                                <small><i class="fa fa-clock-o"></i> Today</small>
+                                            </h4>
+                                            <p>Why not buy a new awesome theme?</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <img src="static/img/yasuo.jpg" class="img-circle"
+                                                     alt="User Image">
+                                            </div>
+                                            <h4>
+                                                Sales Department
+                                                <small><i class="fa fa-clock-o"></i> Yesterday</small>
+                                            </h4>
+                                            <p>Why not buy a new awesome theme?</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <img src="static/img/yasuo.jpg" class="img-circle"
+                                                     alt="User Image">
+                                            </div>
+                                            <h4>
+                                                Reviewers
+                                                <small><i class="fa fa-clock-o"></i> 2 days</small>
+                                            </h4>
+                                            <p>Why not buy a new awesome theme?</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="footer"><a href="#">See All Messages</a></li>
+                        </ul>
+                    </li>
+                    <!-- Notifications: style can be found in dropdown.less -->
+                    <li class="dropdown notifications-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="label label-warning">10</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">你有10个新消息</li>
+                            <li>
+                                <!-- inner menu: contains the actual data -->
+                                <ul class="menu">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-warning text-yellow"></i> Very long description here that
+                                            may not
+                                            fit into the page and may cause design problems
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-users text-red"></i> 5 new members joined
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-shopping-cart text-green"></i> 25 sales made
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-user text-red"></i> You changed your username
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="footer"><a href="#">View all</a></li>
+                        </ul>
+                    </li>
+                    <!-- Tasks: style can be found in dropdown.less -->
+                    <li class="dropdown tasks-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-flag-o"></i>
+                            <span class="label label-danger">9</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">你有9个新任务</li>
+                            <li>
+                                <!-- inner menu: contains the actual data -->
+                                <ul class="menu">
+                                    <li>
+                                        <!-- Task item -->
+                                        <a href="#">
+                                            <h3>
+                                                Design some buttons
+                                                <small class="pull-right">20%</small>
+                                            </h3>
+                                            <div class="progress xs">
+                                                <div class="progress-bar progress-bar-aqua" style="width: 20%"
+                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                     aria-valuemax="100">
+                                                    <span class="sr-only">20% Complete</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <!-- end task item -->
+                                    <li>
+                                        <!-- Task item -->
+                                        <a href="#">
+                                            <h3>
+                                                Create a nice theme
+                                                <small class="pull-right">40%</small>
+                                            </h3>
+                                            <div class="progress xs">
+                                                <div class="progress-bar progress-bar-green" style="width: 40%"
+                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                     aria-valuemax="100">
+                                                    <span class="sr-only">40% Complete</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <!-- end task item -->
+                                    <li>
+                                        <!-- Task item -->
+                                        <a href="#">
+                                            <h3>
+                                                Some task I need to do
+                                                <small class="pull-right">60%</small>
+                                            </h3>
+                                            <div class="progress xs">
+                                                <div class="progress-bar progress-bar-red" style="width: 60%"
+                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                     aria-valuemax="100">
+                                                    <span class="sr-only">60% Complete</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <!-- end task item -->
+                                    <li>
+                                        <!-- Task item -->
+                                        <a href="#">
+                                            <h3>
+                                                Make beautiful transitions
+                                                <small class="pull-right">80%</small>
+                                            </h3>
+                                            <div class="progress xs">
+                                                <div class="progress-bar progress-bar-yellow" style="width: 80%"
+                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                     aria-valuemax="100">
+                                                    <span class="sr-only">80% Complete</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <!-- end task item -->
+                                </ul>
+                            </li>
+                            <li class="footer">
+                                <a href="#">View all tasks</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- User Account: style can be found in dropdown.less -->
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="static/img/yasuo.jpg" class="user-image" alt="User Image">
+                            <span class="hidden-xs">小小英雄-亚索</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
+                                <img src="static/img/yasuo.jpg" class="img-circle" alt="User Image">
+
+                                <p>
+                                    小小英雄-亚索
+                                    <small>最后登录 11:20AM</small>
+                                </p>
+                            </li>
+                            <!-- Menu Body
+                    <li class="user-body">
+                        <div class="row">
+                            <div class="col-xs-4 text-center">
+                                <a href="#">Followers</a>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <a href="#">Sales</a>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <a href="#">Friends</a>
+                            </div>
+                        </div>
+                    </li>-->
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat">修改密码</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="#" class="btn btn-default btn-flat">注销</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- 页面头部 /-->
+
+    <!-- 导航侧栏 -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="static/img/yasuo.jpg" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>小小英雄-亚索</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
+                </div>
+            </div>
+            <!-- search form -->
+            <!--<form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="搜索...">
+            <span class="input-group-btn">
+            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+            </button>
+          </span>
+        </div>
+    </form>-->
+            <!-- /.search form -->
+
+
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                <li class="header">菜单</li>
+
+                <li id="lineup">
+                    <a href="/lineup"><i class="fa fa-group"></i> <span>阵容</span></a>
+                </li>
+
+                <li id="jobranking">
+                    <a href="/jobranking"><i class="fa fa-pie-chart"></i> <span>羁绊排行</span></a>
+                </li>
+
+                <li id="herocloud">
+                    <a href="/herocloud"><i class="fa fa-skyatlas"></i> <span>英雄词云</span></a>
+                </li>
+
+                <li id="equipranking">
+                    <a href="/equipranking"><i class="fa fa-area-chart"></i> <span>装备排行</span></a>
+                </li>
+
+                <li id="hero">
+                    <a href="/hero"><i class="fa fa-user"></i> <span>英雄</span></a>
+                </li>
+
+                <li id="equip">
+                    <a href="/equip"><i class="fa fa-wrench"></i> <span>装备</span></a>
+                </li>
+
+                <li id="hex">
+                    <a href="/hex"><i class="fa fa-gg"></i> <span>海克斯</span></a>
+                </li>
+
+                <li id="job">
+                    <a href="/job"><i class="fa fa-chain"></i> <span>羁绊</span></a>
+                </li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <!-- 导航侧栏 /-->
+
+    <!-- 内容区域 -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper"
+         style="background: #1b2128 url('http://game.gtimg.cn/images/lol/tft/content-site/bg-top.png');">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h2 class="page-title">
+                阵容推荐
+            </h2>
+        </section>
+
+        <!-- Main content -->
+        <section class="content" id="app">
+            <div class="linup-list">
+                <div class="lineup-item" v-for="lineuplist in lineupList">
+                    <div class="lineup-info" :title="lineuplist.info" @click="showLineupInfo(lineuplist.info)">
+                        <div class="lineup-champion-bg" :style="{'background-image': 'url('+lineuplist.bgImagePath+')'}"></div>
+                        <div class="lineup-name" > 
+                            {{ lineuplist.line_name }}
+                        </div>
+                        <div class="lineup-hex">
+                            <div class="component-hex" v-for="hex in lineuplist.hexbuff.recomm">
+                                <div class="component-pic" :title="hex.name">
+                                    <img :src= "hex.imgUrl" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lineup-champions">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper" >
+                                    <div class="champion-wrap swiper-slide" style="width: 85.4444px;" v-for="chess in lineuplist.hero_location">
+                                        <div class="component-champion cost 'chess.price' champion-main">
+                                            <div draggable="false" class="champion-pic" :title="chess.name">
+                                                
+                                                <img :src="chess.hero_image"
+                                                     draggable="false">
+                                            </div>
+                                            <div class="icon-carry" v-if="chess.is_carry_hero"></div>
+                                            <div class="champion-stars star-3" v-if="chess.is_3_star">
+                                                <i class="icon-champion-star"></i>
+                                                <i class="icon-champion-star"></i>
+                                                <i class="icon-champion-star"></i>
+                                            </div>
+                                        </div>
+                                        <div class="equipment-list" v-if="chess.equip_image_list">
+                                            <div class="component-equipment" v-for="equipurl in chess.equip_image_list">
+                                                <img :src="equipurl">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/" class="lineup-link"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+
+    <!-- page script -->
+    <!-- 内容区域 /-->
+
+    <!-- 底部导航 -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 1.0.8
+        </div>
+        <strong>Copyright &copy; 2022 <a href="/#">第11组</a>.</strong> All rights reserved.
+    </footer>
+    <!-- 底部导航 /-->
+
+</div>
+
+
+<script src="static/plugins/js/jquery-2.2.3.min.js"></script>
+<script src="static/plugins/js/jquery-ui.min.js"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<script src="static/plugins/js/bootstrap.min.js"></script>
+<script src="static/plugins/js/raphael-min.js"></script>
+<script src="static/plugins/js/morris.min.js"></script>
+<script src="static/plugins/js/jquery.sparkline.min.js"></script>
+<script src="static/plugins/js/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="static/plugins/js/jquery-jvectormap-world-mill-en.js"></script>
+<script src="static/plugins/js/jquery.knob.js"></script>
+<script src="static/plugins/js/moment.min.js"></script>
+<script src="static/plugins/js/daterangepicker.js"></script>
+<script src="static/plugins/js/daterangepicker.zh-CN.js"></script>
+<script src="static/plugins/js/bootstrap-datepicker.js"></script>
+<script src="static/plugins/js/bootstrap-datepicker.zh-CN.js"></script>
+<script src="static/plugins/js/bootstrap3-wysihtml5.all.min.js"></script>
+<script src="static/plugins/js/jquery.slimscroll.min.js"></script>
+<script src="static/plugins/js/fastclick.js"></script>
+<script src="static/plugins/js/icheck.min.js"></script>
+<script src="static/plugins/js/app.min.js"></script>
+<script src="static/plugins/js/jquery.treetable.js"></script>
+<script src="static/plugins/js/select2.full.min.js"></script>
+<script src="static/plugins/js/bootstrap-colorpicker.min.js"></script>
+<script src="static/plugins/js/bootstrap-wysihtml5.zh-CN.js"></script>
+<script src="static/plugins/js/bootstrap-markdown.js"></script>
+<script src="static/plugins/js/bootstrap-markdown.zh.js"></script>
+<script src="static/plugins/js/markdown.js"></script>
+<script src="static/plugins/js/to-markdown.js"></script>
+<script src="static/plugins/js/ckeditor.js"></script>
+<script src="static/plugins/js/jquery.inputmask.js"></script>
+<script src="static/plugins/js/jquery.inputmask.date.extensions.js"></script>
+<script src="static/plugins/js/jquery.inputmask.extensions.js"></script>
+<script src="static/plugins/js/jquery.dataTables.min.js"></script>
+<script src="static/plugins/js/dataTables.bootstrap.min.js"></script>
+<script src="static/plugins/js/Chart.min.js"></script>
+<script src="static/plugins/js/jquery.flot.min.js"></script>
+<script src="static/plugins/js/jquery.flot.resize.min.js"></script>
+<script src="static/plugins/js/jquery.flot.pie.min.js"></script>
+<script src="static/plugins/js/jquery.flot.categories.min.js"></script>
+<script src="static/plugins/js/ion.rangeSlider.min.js"></script>
+<script src="static/plugins/js/bootstrap-slider.js"></script>
+<script src="static/plugins/js/bootstrap-datetimepicker.js"></script>
+<script src="static/plugins/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="static/plugins/js/axios.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // 选择框
+        $(".select2").select2();
+
+        // WYSIHTML5编辑器
+        $(".textarea").wysihtml5({
+            locale: 'zh-CN'
+        });
+    });
+
+
+    // 设置激活菜单
+    function setSidebarActive(tagUri) {
+        var liObj = $("#" + tagUri);
+        if (liObj.length > 0) {
+            liObj.parent().parent().addClass("active");
+            liObj.addClass("active");
+        }
+    }
+
+
+    $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+
+
+    // 激活导航位置
+    setSidebarActive("lineup");
+</script>
+    <script src="static/js/main.js"></script>
 </body>
 
 </html>
