@@ -425,7 +425,7 @@
                             <div class="swiper-container">
                                 <div class="swiper-wrapper" >
                                     <div class="champion-wrap swiper-slide" style="width: 85.4444px;" v-for="chess in lineuplist.hero_location">
-                                        <div class="component-champion cost 'chess.price' champion-main">
+                                        <div :class="chess.chessPriceClass">
                                             <div draggable="false" class="champion-pic" :title="chess.name" @click.stop="showInfo(chess.name+'\n'+chess.skillDetail)">
                                                 
                                                 <img :src="chess.hero_image"
