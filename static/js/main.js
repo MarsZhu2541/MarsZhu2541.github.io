@@ -95,7 +95,7 @@ createApp({
 
                         position['price'] = hero.price
                         if (!position['is_carry_hero'] == "") {
-                            lineup['bgImagePath'] = 'https:game.gtimg.cn/images/lol/tftstore/s7.5/624x318/' +
+                            lineup['bgImagePath'] = 'https://game.gtimg.cn/images/lol/tftstore/s7.5/624x318/' +
                                 hero.name.toString().replace('png', 'jpg')
                         }
                         position['name'] = hero.title + " " + hero.displayName
