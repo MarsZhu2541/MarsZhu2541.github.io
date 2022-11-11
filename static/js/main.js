@@ -3,11 +3,18 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            cacheTime: 3600000,
             lineupList: [],
         }
     },
     mounted() {
-        this.getLineupList()
+        if (localStorage.getItem("lineuplist") == null || new Date().valueOf() - parseInt(localStorage.getItem("timeLoadLineuplist")) > this.cacheTime) {
+            console.log("no cahce")
+            this.getLineupList()
+        } else {
+            console.log("use cahce")    
+            this.lineupList = JSON.parse(localStorage.getItem("lineuplist"))
+        }
     },
     methods: {
         getLineupList() {
@@ -42,7 +49,7 @@ createApp({
                 })
         },
         async getHexMap() {
-            rawData= {}
+            rawData = {}
             hexMap = {}
             await axios.get('https://game.gtimg.cn/images/lol/act/img/tft/js/hex.js')
                 .then(res => {
@@ -51,14 +58,14 @@ createApp({
                 .catch(err => {
                     console.log('错误' + err)
                 })
-            for(i in rawData){
+            for (i in rawData) {
                 hexMap[rawData[i].hexId] = rawData[i]
             }
             return hexMap
-        
+
         },
         async getEquipMap() {
-            rawData= {}
+            rawData = {}
             equipMap = {}
             await axios.get('https://game.gtimg.cn/images/lol/act/img/tft/js/equip.js')
                 .then(res => {
@@ -67,11 +74,11 @@ createApp({
                 .catch(err => {
                     console.log('错误' + err)
                 })
-            for(i in rawData){
-               equipMap[rawData[i].equipId] =rawData[i]
+            for (i in rawData) {
+                equipMap[rawData[i].equipId] = rawData[i]
             }
             return equipMap
-        
+
         },
         async addCustomData(chessList) {
             let lineupList = this.lineupList
@@ -88,24 +95,24 @@ createApp({
                 lineup = lineupList[i]
                 //enhance lineup info
 
-                orderStr=lineup.equipment_order
+                orderStr = lineup.equipment_order
                 orderArr = lineup.equipment_order.split(',')
-                while(orderStr[orderStr.length-1]==','){
-                    orderStr = orderStr.substr(0,orderStr.length-1)
+                while (orderStr[orderStr.length - 1] == ',') {
+                    orderStr = orderStr.substr(0, orderStr.length - 1)
                     orderArr.pop()
                 }
-                for(h in orderArr){
-                    orderStr = orderStr.replace(orderArr[h],equipMap[parseInt(orderArr[h])].name)   
+                for (h in orderArr) {
+                    orderStr = orderStr.replace(orderArr[h], equipMap[parseInt(orderArr[h])].name)
                 }
-                orderStr = orderStr.replaceAll(',','>')
+                orderStr = orderStr.replaceAll(',', '>')
 
-                lineup.info= "D牌节奏： "+lineup.d_time+"\n"
-                +"早期玩法： "+lineup.early_info+"\n"
-                +"抢装顺序： "+orderStr+"\n\n"
-                +"克制阵容： "+lineup.enemy_info+"\n\n"
-                +"装备推荐： "+lineup.equipment_info+"\n\n"
-                +"海克斯推荐： "+lineup.hex_info+"\n"
-                +"站位推荐： "+lineup.location_info+"\n";
+                lineup.info = "D牌节奏： " + lineup.d_time + "\n"
+                    + "早期玩法： " + lineup.early_info + "\n"
+                    + "抢装顺序： " + orderStr + "\n\n"
+                    + "克制阵容： " + lineup.enemy_info + "\n\n"
+                    + "装备推荐： " + lineup.equipment_info + "\n\n"
+                    + "海克斯推荐： " + lineup.hex_info + "\n"
+                    + "站位推荐： " + lineup.location_info + "\n";
 
                 //enhance hero data
                 level_3_heros = lineup['level_3_heros']
@@ -128,36 +135,38 @@ createApp({
                                 hero.name.toString().replace('png', 'jpg')
                         }
                         position['name'] = hero.title + " " + hero.displayName
-                        position['skillDetail'] = hero.skillDetail 
+                        position['skillDetail'] = hero.skillDetail
                         position['is_3_star'] = level_3_heros.includes(hero_id)
                         position['hero_image'] = "https://game.gtimg.cn/images/lol/act/img/tft/champions/" + hero.name
                         position['price'] = hero.price
-                        position['chessPriceClass'] = "component-champion cost"+hero.price +" champion-main"
-                        position['equip_image_list']=[]
+                        position['chessPriceClass'] = "component-champion cost" + hero.price + " champion-main"
+                        position['equip_image_list'] = []
                         position.equipment_id = position.equipment_id.split(',')
-                        for(k in position.equipment_id){
-                            equipID = position.equipment_id[k] 
-                            if(!(equipMap[equipID]==undefined)){
-                                position['equip_image_list'].push(equipMap[equipID].imagePath)  
+                        for (k in position.equipment_id) {
+                            equipID = position.equipment_id[k]
+                            if (!(equipMap[equipID] == undefined)) {
+                                position['equip_image_list'].push(equipMap[equipID].imagePath)
                             }
-                            
+
                         }
                     }
                 }
                 //enhance hex data
                 hexIDList = lineup.hexbuff.recomm.split(",")
                 lineup.hexbuff.recomm = []
-                for(i in hexIDList){
-                    hexID =hexIDList[i]
-                    if(!(hexMap[hexID]==undefined)){
+                for (i in hexIDList) {
+                    hexID = hexIDList[i]
+                    if (!(hexMap[hexID] == undefined)) {
                         lineup.hexbuff.recomm.push(hexMap[hexID])
                     }
 
                 }
             }
+            localStorage.setItem("timeLoadLineuplist", new Date().valueOf().toString())
+            localStorage.setItem("lineuplist", JSON.stringify(this.lineupList) )
             console.log(lineupList)
         },
-        showInfo(info){
+        showInfo(info) {
             alert(info)
         }
     },
