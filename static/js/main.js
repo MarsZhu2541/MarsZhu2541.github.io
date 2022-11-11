@@ -1,4 +1,3 @@
-
 const { createApp } = Vue
 
 createApp({
@@ -91,6 +90,7 @@ createApp({
                         hero_id = parseInt(position['hero_id'])
                     }
                     hero = chessMap[hero_id]
+                    console.log(hero)
                     if (!(hero == undefined)) {
 
                         position['price'] = hero.price
@@ -99,6 +99,7 @@ createApp({
                                 hero.name.toString().replace('png', 'jpg')
                         }
                         position['name'] = hero.title + " " + hero.displayName
+                        position['skillDetail'] = hero.skillDetail 
                         position['is_3_star'] = level_3_heros.includes(hero_id)
                         position['hero_image'] = "https://game.gtimg.cn/images/lol/act/img/tft/champions/" + hero.name
                         position['price'] = hero.price
@@ -117,7 +118,7 @@ createApp({
             }
             console.log(lineupList)
         },
-        showLineupInfo(info){
+        showInfo(info){
             alert(info)
         }
     },
