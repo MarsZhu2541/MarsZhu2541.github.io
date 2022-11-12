@@ -155,6 +155,7 @@ createApp({
                         }
                     }
                 }
+                positions.sort(this.compareHero)
                 //enhance hex data
                 hexIDList = lineup.hexbuff.recomm.split(",")
                 lineup.hexbuff.recomm = []
@@ -199,6 +200,20 @@ createApp({
                 return -1;
             }
             return 0;
+        },
+        compareHero(a,b){
+            if(a.is_3_star&&!b.is_3_star){
+                return -1;
+            }else if(b.is_3_star&&!a.is_3_star){
+                return 1;
+            }else{
+                if(a.is_carry_hero&&!(b.is_carry_hero)){
+                    return -1;
+                }else if(b.is_carry_hero&&!(a.is_carry_hero)){
+                    return 1;
+                }
+                return 0
+            }
         }
     },
 }).mount('#app')
