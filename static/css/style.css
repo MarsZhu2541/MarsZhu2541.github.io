@@ -147,7 +147,7 @@ html {
 .content-wrapper .content {
 	margin: 0 auto;
 	text-align: center;
-	oevrflow-x:scroll;
+	overflow-x:scroll;
 }
 
 .content-wrapper .other-content {
