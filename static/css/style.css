@@ -679,7 +679,7 @@ i {
     height: .62rem;
     display: block;
     position: relative;
-    background-image: url(//game.gtimg.cn/images/lol/tft/content-site/sprite-img.png?v=1664257395867);
+    background-image: url("https:////game.gtimg.cn/images/lol/tft/content-site/sprite-img.png?v=1664257395867");
     background-size: 4.4rem 3.8rem;
     background-repeat: no-repeat;
 }
