@@ -414,6 +414,7 @@
                         <div class="lineup-name" > 
                             {{ lineuplist.line_name }}
                         </div>
+                        <div class="lineup-quality" v-if="lineuplist.quality"><span>{{ lineuplist.quality }}</span></div>
                         <div class="lineup-hex">
                             <div class="component-hex" v-for="hex in lineuplist.hexbuff.recomm">
                                 <div class="component-pic" :title="hex.name+': '+hex.description" @click.stop="showInfo(hex.name+': '+hex.description)">
