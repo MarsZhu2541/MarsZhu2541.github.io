@@ -1,106 +1,123 @@
-
 /* tab 1*/
 .double {
-	line-height: 58px;
+    line-height: 58px;
 }
-.title .glyphicon{
-	padding: 3px;
-	font-size: 13px;
+
+.title .glyphicon {
+    padding: 3px;
+    font-size: 13px;
     border-radius: 8px;
     color: #fff;
-	
+
 }
+
 .data span.arrowup {
-	color: #d88918;
+    color: #d88918;
 }
+
 .data span.arrowdown {
-	color: #6bb10a;
+    color: #6bb10a;
 }
-.item-blue .glyphicon{
-	background-color: #39a9ea;
+
+.item-blue .glyphicon {
+    background-color: #39a9ea;
 }
+
 .item-green {
-	line-height: 58px;
+    line-height: 58px;
 }
-.item-green .glyphicon{
-	background-color: #6bb10a;
-	line-height: 12px;
+
+.item-green .glyphicon {
+    background-color: #6bb10a;
+    line-height: 12px;
 }
-.item-orange .glyphicon{
-	background-color:#d88918;
+
+.item-orange .glyphicon {
+    background-color: #d88918;
 }
-.item-red .glyphicon{
-	background-color: #f14f4f;
+
+.item-red .glyphicon {
+    background-color: #f14f4f;
 }
+
 .chart .chart-box {
-	margin: 10px;
+    margin: 10px;
 }
 
 .data-type .title,
 .data-type .data {
-	padding: 3px 12px;
-	border-top: 1px solid #d4d4d4;
-	overflow: hidden;
+    padding: 3px 12px;
+    border-top: 1px solid #d4d4d4;
+    overflow: hidden;
     height: 42px;
 }
+
 .data-type .title {
     line-height: 34px;
-	border-right: 1px solid #d4d4d4;
+    border-right: 1px solid #d4d4d4;
 }
 
-.data-type .data:last-child{
-	border-right: 0;
+.data-type .data:last-child {
+    border-right: 0;
 }
-.data-type .title{
-	text-align: center;
-	background: #ececec;
+
+.data-type .title {
+    text-align: center;
+    background: #ececec;
 }
-.data-type .data .line{
-	vertical-align: middle;
-	overflow: hidden;
-	padding-bottom: 10px;
-	padding-top: 10px;
+
+.data-type .data .line {
+    vertical-align: middle;
+    overflow: hidden;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 /* label行高度 */
-.data-type .data > label {
-	line-height:36px;
+.data-type .data>label {
+    line-height: 36px;
 }
-.data-type .data > .form-group {
-	line-height:36px;
+
+.data-type .data>.form-group {
+    line-height: 36px;
 }
+
 .data-type .data.text {
-	line-height:36px;
+    line-height: 36px;
 }
+
 /* label行分隔符 */
 .data-type .data.border-right {
-	border-right: 1px solid #d4d4d4;
+    border-right: 1px solid #d4d4d4;
 }
 
 /* 表格双倍高度 */
 .data-type .title.rowHeight2x,
 .data-type .data.rowHeight2x {
-	height:84px;
+    height: 84px;
 }
-.data-type .title.rowHeight2x ,
+
+.data-type .title.rowHeight2x,
 .data-type .data.rowHeight2x.text {
-	line-height:78px;
+    line-height: 78px;
 }
+
 /*.data-type .data.rowHeight2x > label {
 	line-height:78px;
 }*/
 .data-type .title.editer,
 .data-type .data.editer {
-	height:320px;
+    height: 320px;
 }
+
 .data-type .title.editer {
-	line-height:300px;
+    line-height: 300px;
 }
 
 /*清除parding*/
 .padding-clear {
-	padding-right: 0px;
-	padding-left: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
 }
 
 /* 文件上传 */
@@ -120,7 +137,8 @@
     *display: inline;
     *zoom: 1
 }
-.a-upload  input {
+
+.a-upload input {
     position: absolute;
     font-size: 100px;
     right: 0;
@@ -129,6 +147,7 @@
     filter: alpha(opacity=0);
     cursor: pointer
 }
+
 .a-upload:hover {
     color: #444;
     background: #eee;
@@ -141,18 +160,18 @@ html {
 }
 
 .content-wrapper {
-	background-image: url("http://game.gtimg.cn/images/lol/tft/content-site/bg-top.png");
+    background-image: url("http://game.gtimg.cn/images/lol/tft/content-site/bg-top.png");
 }
 
 .content-wrapper .content {
-	margin: 0 auto;
-	text-align: center;
-	overflow-x:scroll;
+    margin: 0 auto;
+    text-align: center;
+    overflow-x: scroll;
 }
 
 .content-wrapper .other-content {
-	margin: 0 auto;
-	padding: 40px;
+    margin: 0 auto;
+    padding: 40px;
 }
 
 .linup-list {
@@ -161,12 +180,12 @@ html {
 }
 
 .lineup-item {
-	position: relative;
+    position: relative;
     margin: 0 0 .2rem;
     background: #161a20;
     border: 1px solid #313e4c;
     border-radius: .02rem;
-	transition: height .3s,border-color .3s;
+    transition: height .3s, border-color .3s;
 }
 
 .lineup-item:hover {
@@ -174,7 +193,7 @@ html {
 }
 
 .lineup-item .lineup-info {
-	position: relative;
+    position: relative;
     background: #262f3a;
     display: flex;
     display: -webkit-flex;
@@ -186,7 +205,7 @@ html {
 }
 
 .lineup-item .lineup-info .lineup-name {
-	position: relative;
+    position: relative;
     color: #fff5e0;
     font-size: .18rem;
     width: 30%;
@@ -197,7 +216,7 @@ html {
     letter-spacing: .02rem;
 }
 
-.lineup-item .lineup-info .lineup-hex{
+.lineup-item .lineup-info .lineup-hex {
     display: flex;
     justify-content: space-around;
     width: 12%;
@@ -205,19 +224,19 @@ html {
     z-index: 2;
 }
 
-.component-hex{
+.component-hex {
     display: inline-block;
     vertical-align: middle;
     text-align: center;
     cursor: pointer;
 }
 
-.lineup-item .lineup-info .component-hex .component-pic{
+.lineup-item .lineup-info .component-hex .component-pic {
     width: .44rem;
     height: .44rem;
 }
 
-.component-hex .component-pic{
+.component-hex .component-pic {
     width: .5rem;
     height: .5rem;
     background: url("http://game.gtimg.cn/images/lol/tft/content-site/bg-hex.png") no-repeat center;
@@ -229,16 +248,16 @@ html {
     align-items: center;
 }
 
-.component-hex .component-pic>img{
+.component-hex .component-pic>img {
     width: 75%;
     height: 75%;
 }
 
-img{
+img {
     border: 0;
 }
 
-.lineup-item .lineup-info .lineup-champions{
+.lineup-item .lineup-info .lineup-champions {
     position: relative;
     width: 60%;
     height: 100%;
@@ -246,11 +265,11 @@ img{
     padding-right: 4.6%;
 }
 
-.lineup-item .lineup-info .lineup-champions .swiper-container{
+.lineup-item .lineup-info .lineup-champions .swiper-container {
     width: 100%;
 }
 
-.swiper-container{
+.swiper-container {
     margin: 0 auto;
     position: relative;
     overflow: hidden;
@@ -259,7 +278,7 @@ img{
     z-index: 1;
 }
 
-.swiper-wrapper{
+.swiper-wrapper {
     margin: 0 auto;
     position: relative;
     width: 100%;
@@ -267,11 +286,11 @@ img{
     z-index: 1;
     display: -ms-flexbox;
     display: flex;
-    transition-property: transform,-webkit-transform;
+    transition-property: transform, -webkit-transform;
     box-sizing: content-box;
 }
 
-.lineup-item .lineup-info .lineup-champions .champion-wrap{
+.lineup-item .lineup-info .lineup-champions .champion-wrap {
     height: 100%;
     line-height: 1.3rem;
     position: relative;
@@ -279,11 +298,11 @@ img{
     text-align: center;
 }
 
-.swiper-slide{
+.swiper-slide {
     flex-shrink: 0;
 }
 
-.component-champion{
+.component-champion {
     position: relative;
     display: inline-block;
     vertical-align: middle;
@@ -361,7 +380,7 @@ img{
     background: #000;
     position: relative;
     cursor: pointer;
-    transition: border-color,.3s;
+    transition: border-color, .3s;
     z-index: 1;
 }
 
@@ -467,7 +486,7 @@ a {
 
 .lineup-item .lineup-info .lineup-champion-bg:after {
     content: "";
-    background-image: linear-gradient(to right,rgba(0,0,0,0),rgba(38,47,58,0),rgba(38,47,58,0),rgba(38,47,58,0),#262f3a,#262f3a);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(38, 47, 58, 0), rgba(38, 47, 58, 0), rgba(38, 47, 58, 0), #262f3a, #262f3a);
     position: absolute;
     top: 0;
     left: 0;
@@ -518,7 +537,7 @@ a {
     position: absolute;
     top: 0;
     left: 0;
-    background-image: linear-gradient(to right,rgba(0,0,0,.3),rgba(0,0,0,0),rgba(0,0,0,.3));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0), rgba(0, 0, 0, .3));
     width: 100%;
     height: 100%;
 }
@@ -556,7 +575,7 @@ a {
 
 .page-champion .champion-item-big .champion-item-pic .race-job-icon {
     position: relative;
-    background: rgba(27,33,40,.4);
+    background: rgba(27, 33, 40, .4);
     border-radius: 50%;
     width: .3rem;
     height: .3rem;
@@ -569,8 +588,8 @@ a {
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
     width: .18rem;
     height: auto;
     -webkit-filter: contrast(.1) brightness(10);
@@ -623,4 +642,44 @@ i {
 
 .page-champion .champion-item-big:hover {
     border-color: #ae8b42;
+}
+
+.page-rank-lineup .lineup-item .lineup-info .lineup-quality {
+    position: absolute;
+    top: .6rem;
+    right: .28rem
+}
+
+
+ .lineup-quality {
+    position: relative;
+    color: #d7a75f;
+    font-size: .2rem;
+    font-family: Dinot;
+    font-weight: 700;
+    line-height: .56rem;
+    text-align: center;
+    margin: 0 .1rem
+}
+
+ .lineup-quality:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -.54rem 0 0;
+    width: 1px;
+    height: 1.08rem;
+    background: rgba(48, 63, 110, .5)
+}
+
+ .lineup-quality>span {
+    background-position: -2.33rem -.82rem;
+    width: .62rem;
+    height: .62rem;
+    display: block;
+    position: relative;
+    background-image: url(//game.gtimg.cn/images/lol/tft/content-site/sprite-img.png?v=1664257395867);
+    background-size: 4.4rem 3.8rem;
+    background-repeat: no-repeat;
 }
