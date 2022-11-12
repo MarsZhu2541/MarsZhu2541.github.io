@@ -155,7 +155,8 @@ createApp({
                         }
                     }
                 }
-                positions.sort(this.compareHero)
+                positions.sort(this.compareHeroByIs3Star)
+                positions.sort(this.compareHeroByEquip)
                 //enhance hex data
                 hexIDList = lineup.hexbuff.recomm.split(",")
                 lineup.hexbuff.recomm = []
@@ -201,7 +202,23 @@ createApp({
             }
             return 0;
         },
-        compareHero(a,b){
+        compareHeroByEquip(a,b){
+            if(a.equip_image_list==undefined){
+                a.equip_image_list= []
+            }
+            if(b.equip_image_list==undefined){
+                b.equip_image_list= []
+            }
+            if(a.equip_image_list.length>b.equip_image_list.length){
+                return -1
+            }else if(b.equip_image_list.length>a.equip_image_list.length){
+                return 1
+            }else{
+                return 0;
+            }
+        },
+        compareHeroByIs3Star(a,b){
+        
             if(a.is_3_star&&!b.is_3_star){
                 return -1;
             }else if(b.is_3_star&&!a.is_3_star){
@@ -212,8 +229,7 @@ createApp({
                 }else if(b.is_carry_hero&&!(a.is_carry_hero)){
                     return 1;
                 }
-                return 0
-            }
+            }      
         }
     },
 }).mount('#app')
