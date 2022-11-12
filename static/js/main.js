@@ -9,10 +9,10 @@ createApp({
     },
     mounted() {
         if (localStorage.getItem("lineuplist") == null || new Date().valueOf() - parseInt(localStorage.getItem("timeLoadLineuplist")) > this.cacheTime) {
-            console.log("no cahce")
+            console.log("no cache")
             this.getLineupList()
         } else {
-            console.log("use cahce")    
+            console.log("use cache")    
             this.lineupList = JSON.parse(localStorage.getItem("lineuplist"))
         }
     },
