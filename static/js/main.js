@@ -3,7 +3,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            cacheTime: 0,
+            cacheTime: 3600000,
             lineupList: [],
         }
     },
