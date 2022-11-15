@@ -4,7 +4,9 @@ createApp({
     data() {
         return {
             cacheTime: 3600000,
+            pageTitle:"阵容推荐",
             lineupList: [],
+            sideBarTag: "lineup",
             lineupUrl:"https://game.gtimg.cn/images/lol/act/tftzlkauto/json/totalLineupJson/lineup_total.json?v=2779984",
             chessUrl:"https://game.gtimg.cn/images/lol/act/img/tft/js/chess.js",
             hexUrl:"https://game.gtimg.cn/images/lol/act/img/tft/js/hex.js",
@@ -14,6 +16,7 @@ createApp({
         }
     },
     mounted() {
+
         if (localStorage.getItem("lineuplist") == null || new Date().valueOf() - parseInt(localStorage.getItem("timeLoadLineuplist")) > this.cacheTime) {
             console.log("no cache")
             this.getLineupList()
@@ -21,6 +24,9 @@ createApp({
             console.log("use cache")
             this.lineupList = JSON.parse(localStorage.getItem("lineuplist"))
         }
+
+        // 激活导航位置
+        this.setSidebarActive("lineup");
     },
     methods: {
         getLineupList() {
@@ -241,6 +247,24 @@ createApp({
                     return 1;
                 }
             }      
+        },
+        setSidebarActive(tagUri) {
+            var liObj = $("#" + this.sideBarTag);
+            if (liObj.length > 0) {
+                liObj.parent().parent().removeClass("active");
+                liObj.removeClass("active");
+            }
+
+            var liObj = $("#" + tagUri);
+            if (liObj.length > 0) {
+                liObj.parent().parent().addClass("active");
+                liObj.addClass("active");
+            }
+        },
+        changeContent(id,title){
+            this.setSidebarActive(id);
+            this.sideBarTag = id
+            this.pageTitle = title
         }
     },
 }).mount('#app')

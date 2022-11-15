@@ -42,14 +42,14 @@
 
 <body class="hold-transition skin-purple sidebar-mini">
 
-<div class="wrapper">
+<div class="wrapper" id="app">
 
     <!-- 页面头部 -->
     <header class="main-header">
 
 
         <!-- Logo -->
-        <a href="all-admin-index.html" class="logo">
+        <a href="index.html" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>云顶之奕</b></span>
             <!-- logo for regular state and mobile devices -->
@@ -358,35 +358,35 @@
                 <li class="header">菜单</li>
 
                 <li id="lineup">
-                    <a href="/lineup"><i class="fa fa-group"></i> <span>阵容</span></a>
+                    <a href="#" @click="changeContent('lineup','阵容推荐')"><i class="fa fa-group"></i> <span>阵容推荐</span></a>
                 </li>
 
                 <li id="jobranking">
-                    <a href="/jobranking"><i class="fa fa-pie-chart"></i> <span>羁绊排行</span></a>
+                    <a href="#" @click="changeContent('jobranking','羁绊排行')"><i class="fa fa-pie-chart"></i> <span>羁绊排行</span></a>
                 </li>
 
                 <li id="herocloud">
-                    <a href="/herocloud"><i class="fa fa-skyatlas"></i> <span>英雄词云</span></a>
+                    <a href="#" @click="changeContent('herocloud','英雄词云')"><i class="fa fa-skyatlas"></i> <span>英雄词云</span></a>
                 </li>
 
                 <li id="equipranking">
-                    <a href="/equipranking"><i class="fa fa-area-chart"></i> <span>装备排行</span></a>
+                    <a href="#" @click="changeContent('equipranking','装备排行')"><i class="fa fa-area-chart"></i> <span>装备排行</span></a>
                 </li>
 
                 <li id="hero">
-                    <a href="/hero"><i class="fa fa-user"></i> <span>英雄</span></a>
+                    <a href="#" @click="changeContent('hero','英雄大全')"><i class="fa fa-user"></i> <span>英雄大全</span></a>
                 </li>
 
                 <li id="equip">
-                    <a href="/equip"><i class="fa fa-wrench"></i> <span>装备</span></a>
+                    <a href="#" @click="changeContent('equip','装备大全')"><i class="fa fa-wrench"></i> <span>装备大全</span></a>
                 </li>
 
                 <li id="hex">
-                    <a href="/hex"><i class="fa fa-gg"></i> <span>海克斯</span></a>
+                    <a href="#" @click="changeContent('hex','海克斯大全')"><i class="fa fa-gg"></i> <span>海克斯大全</span></a>
                 </li>
 
                 <li id="job">
-                    <a href="/job"><i class="fa fa-chain"></i> <span>羁绊</span></a>
+                    <a href="#" @click="changeContent('job','羁绊大全')"><i class="fa fa-chain"></i> <span>羁绊大全</span></a>
                 </li>
             </ul>
         </section>
@@ -401,17 +401,16 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h2 class="page-title">
-                阵容推荐
+                {{pageTitle}}
             </h2>
         </section>
-
         <!-- Main content -->
-        <section class="content" id="app">
-            <div class="linup-list">
+        <section class="content">
+            <div class="linup-list" v-if="sideBarTag=='lineup'">
                 <div class="lineup-item" v-for="lineuplist in lineupList">
                     <div class="lineup-info" :title="lineuplist.info" @click="showInfo(lineuplist.info)">
                         <div class="lineup-champion-bg" :style="{'background-image': 'url('+lineuplist.bgImagePath+')'}"></div>
-                        <div class="lineup-name" > 
+                        <div class="lineup-name" >
                             {{ lineuplist.line_name }}
                         </div>
                         <div class="lineup-quality" v-if="lineuplist.quality"><span>{{ lineuplist.quality }}</span></div>
@@ -452,6 +451,13 @@
                     </div>
                 </div>
             </div>
+            <div  v-if="sideBarTag=='jobranking'">假装有羁绊排行</div>
+            <div  v-if="sideBarTag=='herocloud'">假装有英雄词云</div>
+            <div  v-if="sideBarTag=='equipranking'">假装有装备排行</div>
+            <div  v-if="sideBarTag=='hero'">假装有英雄大全</div>
+            <div  v-if="sideBarTag=='equip'">假装有装备大全</div>
+            <div  v-if="sideBarTag=='hex'">假装有海克斯大全</div>
+            <div  v-if="sideBarTag=='job'">假装有羁绊大全</div>
         </section>
         <!-- /.content -->
     </div>
@@ -471,7 +477,6 @@
     <!-- 底部导航 /-->
 
 </div>
-
 
 <script src="static/plugins/js/jquery-2.2.3.min.js"></script>
 <script src="static/plugins/js/jquery-ui.min.js"></script>
@@ -531,17 +536,6 @@
         });
     });
 
-
-    // 设置激活菜单
-    function setSidebarActive(tagUri) {
-        var liObj = $("#" + tagUri);
-        if (liObj.length > 0) {
-            liObj.parent().parent().addClass("active");
-            liObj.addClass("active");
-        }
-    }
-
-
     $(function () {
         $("#example1").DataTable();
         $('#example2').DataTable({
@@ -555,10 +549,8 @@
     });
 
 
-    // 激活导航位置
-    setSidebarActive("lineup");
 </script>
-    <script src="static/js/main.js"></script>
+<script src="static/js/main.js"></script>
 </body>
 
 </html>
