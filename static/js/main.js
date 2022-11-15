@@ -5,6 +5,12 @@ createApp({
         return {
             cacheTime: 3600000,
             lineupList: [],
+            lineupUrl:"https://game.gtimg.cn/images/lol/act/tftzlkauto/json/totalLineupJson/lineup_total.json?v=2779984",
+            chessUrl:"https://game.gtimg.cn/images/lol/act/img/tft/js/chess.js",
+            hexUrl:"https://game.gtimg.cn/images/lol/act/img/tft/js/hex.js",
+            equipUrl:"https://game.gtimg.cn/images/lol/act/img/tft/js/equip.js",
+            bgImageUrlPrefix:"https://game.gtimg.cn/images/lol/tftstore/s7.5/624x318/",
+            heroImageUrlPrefix:"https://game.gtimg.cn/images/lol/act/img/tft/champions/",
         }
     },
     mounted() {
@@ -20,7 +26,7 @@ createApp({
         getLineupList() {
             let that = this
 
-            axios.get('https://game.gtimg.cn/images/lol/act/tftzlkauto/json/totalLineupJson/lineup_total.json?v=2779984')
+            axios.get(this.lineupUrl)
                 .then(res => {
                     that.handleData(res.data)
                 })
@@ -42,19 +48,28 @@ createApp({
                 lineupList.push(lineUpDetail)
                 // console.log(lineUpDetail.line_name+" "+lineup.channel+" "+lineup.quality+" "+lineup.sortID)
             }
-
-            axios.get('https://game.gtimg.cn/images/lol/act/img/tft/js/chess.js')
+            that.addCustomData()
+        },
+        async getChessMap(){
+            rawData = {}
+            chessMap = {}
+            await axios.get(this.chessUrl)
                 .then(res => {
-                    that.addCustomData(res.data.data)
+                    rawData = res.data.data
                 })
                 .catch(err => {
                     console.log('错误' + err)
                 })
+            for (i in rawData) {
+                chess = rawData[i]
+                chessMap[chess['chessId']] = chess
+            }
+            return chessMap
         },
         async getHexMap() {
             rawData = {}
             hexMap = {}
-            await axios.get('https://game.gtimg.cn/images/lol/act/img/tft/js/hex.js')
+            await axios.get(this.hexUrl)
                 .then(res => {
                     rawData = res.data
                 })
@@ -70,7 +85,7 @@ createApp({
         async getEquipMap() {
             rawData = {}
             equipMap = {}
-            await axios.get('https://game.gtimg.cn/images/lol/act/img/tft/js/equip.js')
+            await axios.get(this.equipUrl)
                 .then(res => {
                     rawData = res.data.data
                 })
@@ -83,16 +98,13 @@ createApp({
             return equipMap
 
         },
-        async addCustomData(chessList) {
+        async addCustomData() {
             let lineupList = this.lineupList
-            let chessMap = {};
+            let chessMap = await this.getChessMap()
             let hexMap = await this.getHexMap()
             let equipMap = await this.getEquipMap()
             // console.log(equipMap)
-            for (i in chessList) {
-                chess = chessList[i]
-                chessMap[chess['chessId']] = chess
-            }
+
 
             for (i in lineupList) {
                 lineup = lineupList[i]
@@ -135,13 +147,12 @@ createApp({
 
                         position['price'] = hero.price
                         if (!position['is_carry_hero'] == "") {
-                            lineup['bgImagePath'] = 'https://game.gtimg.cn/images/lol/tftstore/s7.5/624x318/' +
-                                hero.name.toString().replace('png', 'jpg')
+                            lineup['bgImagePath'] = this.bgImageUrlPrefix + hero.name.toString().replace('png', 'jpg')
                         }
                         position['name'] = hero.title + " " + hero.displayName
                         position['skillDetail'] = hero.skillDetail
                         position['is_3_star'] = level_3_heros.includes(hero_id)
-                        position['hero_image'] = "https://game.gtimg.cn/images/lol/act/img/tft/champions/" + hero.name
+                        position['hero_image'] = this.heroImageUrlPrefix + hero.name
                         position['price'] = hero.price
                         position['chessPriceClass'] = "component-champion cost" + hero.price + " champion-main"
                         position['equip_image_list'] = []
