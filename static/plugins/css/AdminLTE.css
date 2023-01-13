@@ -20,14 +20,14 @@ body {
 body {
   font-family: "Microsoft YaHei", tahoma, "Hiragino Sans GB", "\\5b8b体", 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
-  overflow-x: hidden;
+  overflow-x: scroll;
   overflow-y: auto;
 }
 /* Layout */
 .wrapper {
   height: 100%;
   position: relative;
-  overflow-x: hidden;
+  overflow-x: scroll;
   overflow-y: auto;
 }
 .wrapper:before,

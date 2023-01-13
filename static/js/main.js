@@ -1,18 +1,18 @@
-const { createApp } = Vue
+const {createApp} = Vue
 
 createApp({
     data() {
         return {
-            cacheTime: 3600000,
-            pageTitle:"阵容推荐",
+            cacheTime: 0,
+            pageTitle: "阵容推荐",
             lineupList: [],
             sideBarTag: "lineup",
-            lineupUrl:"https://game.gtimg.cn/images/lol/act/tftzlkauto/json/totalLineupJson/lineup_total.json?v=2779984",
-            chessUrl:"https://game.gtimg.cn/images/lol/act/img/tft/js/chess.js",
-            hexUrl:"https://game.gtimg.cn/images/lol/act/img/tft/js/hex.js",
-            equipUrl:"https://game.gtimg.cn/images/lol/act/img/tft/js/equip.js",
-            bgImageUrlPrefix:"https://game.gtimg.cn/images/lol/tftstore/s7.5/624x318/",
-            heroImageUrlPrefix:"https://game.gtimg.cn/images/lol/act/img/tft/champions/",
+            lineupUrl: "https://game.gtimg.cn/images/lol/act/tftzlkauto/json/totalLineupJson/lineup_total.json?v=2779984",
+            chessUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/chess.js",
+            hexUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/hex.js",
+            equipUrl: "https://game.gtimg.cn/images/lol/act/img/tft/js/equip.js",
+            bgImageUrlPrefix: "https://game.gtimg.cn/images/lol/tftstore/s7.5/624x318/",
+            heroImageUrlPrefix: "https://game.gtimg.cn/images/lol/act/img/tft/champions/",
         }
     },
     mounted() {
@@ -46,17 +46,20 @@ createApp({
             let lineupList = this.lineupList
             let lineup_list = data["lineup_list"]
             lineup_list.sort(this.compareByQuality)
+            console.log(lineup_list)
             lineup_list.sort(this.compareBySortID)
             for (i in lineup_list) {
                 lineup = lineup_list[i]
+                // console.log(lineup.sortID)
+
                 lineUpDetail = JSON.parse(lineup['detail'].replace(/\n/g, "\\n").replace(/\r/g, "\\r"))
-                lineUpDetail.quality =  lineup.quality
+                lineUpDetail.quality = lineup.quality
                 lineupList.push(lineUpDetail)
                 // console.log(lineUpDetail.line_name+" "+lineup.channel+" "+lineup.quality+" "+lineup.sortID)
             }
             that.addCustomData()
         },
-        async getChessMap(){
+        async getChessMap() {
             rawData = {}
             chessMap = {}
             await axios.get(this.chessUrl)
@@ -193,13 +196,13 @@ createApp({
             alert(info)
         },
         compareByQuality(a, b) {
-            if(a.quality==""||a.quality=="0"){
+            if (a.quality == "" || a.quality == "0") {
                 a.quality = "C"
             }
-            if(b.quality==""||b.quality=="0"){
+            if (b.quality == "" || b.quality == "0") {
                 b.quality = "C"
             }
-            qualityMap= {"S":0,"A":1,"B":2,"C":3,"":100}
+            qualityMap = {"S": 0, "A": 1, "B": 2, "C": 3, "": 100}
             a_tag = qualityMap[a.quality]
             b_tag = qualityMap[b.quality]
             if (a_tag < b_tag) {
@@ -210,43 +213,51 @@ createApp({
             return 0;
         },
         compareBySortID(a, b) {
-            aID =parseInt(a.sortID)
-            bID =parseInt(b.sortID)
-            if (aID<bID) {
+            aID = a.sortID
+            bID = b.sortID
+            if (aID == aID && aID == 0) {
+                return 0
+            } else if (aID == 0) {
                 return 1;
-            } else if (aID>bID) {
+            } else if (aID == 0) {
+                return -1;
+            }
+
+            if (aID < bID) {
+                return 1;
+            } else if (aID > bID) {
                 return -1;
             }
             return 0;
         },
-        compareHeroByEquip(a,b){
-            if(a.equip_image_list==undefined){
-                a.equip_image_list= []
+        compareHeroByEquip(a, b) {
+            if (a.equip_image_list == undefined) {
+                a.equip_image_list = []
             }
-            if(b.equip_image_list==undefined){
-                b.equip_image_list= []
+            if (b.equip_image_list == undefined) {
+                b.equip_image_list = []
             }
-            if(a.equip_image_list.length>b.equip_image_list.length){
+            if (a.equip_image_list.length > b.equip_image_list.length) {
                 return -1
-            }else if(b.equip_image_list.length>a.equip_image_list.length){
+            } else if (b.equip_image_list.length > a.equip_image_list.length) {
                 return 1
-            }else{
+            } else {
                 return 0;
             }
         },
-        compareHeroByIs3Star(a,b){
-        
-            if(a.is_3_star&&!b.is_3_star){
+        compareHeroByIs3Star(a, b) {
+
+            if (a.is_3_star && !b.is_3_star) {
                 return -1;
-            }else if(b.is_3_star&&!a.is_3_star){
+            } else if (b.is_3_star && !a.is_3_star) {
                 return 1;
-            }else{
-                if(a.is_carry_hero&&!(b.is_carry_hero)){
+            } else {
+                if (a.is_carry_hero && !(b.is_carry_hero)) {
                     return -1;
-                }else if(b.is_carry_hero&&!(a.is_carry_hero)){
+                } else if (b.is_carry_hero && !(a.is_carry_hero)) {
                     return 1;
                 }
-            }      
+            }
         },
         setSidebarActive(tagUri) {
             var liObj = $("#" + this.sideBarTag);
@@ -261,7 +272,7 @@ createApp({
                 liObj.addClass("active");
             }
         },
-        changeContent(id,title){
+        changeContent(id, title) {
             this.setSidebarActive(id);
             this.sideBarTag = id
             this.pageTitle = title

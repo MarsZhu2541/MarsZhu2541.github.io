@@ -447,8 +447,81 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="/" class="lineup-link"></a>
+                        <a href="#" class="lineup-link"></a>
                     </div>
+<!--                    <div ref="lineupDetail" class="lineup-detail" v-if="isExpand">-->
+<!--                        <div class="detail-1">-->
+<!--                            &lt;!&ndash; 前期阵容 &ndash;&gt;-->
+<!--                            <div class="lineup-stage" v-if="dataItem[detailKey].earlyMapChessList">-->
+<!--                                <div class="lineup-stage-name"><span>前期</span></div>-->
+<!--                                <div class="lineup-stage-list">-->
+<!--                                    <component-champion v-for="(earlyHero, earlyHeroIndex) in dataItem[detailKey].earlyMapChessList"-->
+<!--                                                        :key="'earlyHero_' + earlyHeroIndex"-->
+<!--                                                        :champion-data="earlyHero.dataChess"-->
+<!--                                                        v-if="earlyHero.dataChess && earlyHero.dataChess.chessId !== '99998'"-->
+<!--                                                        :is-respond-event="earlyHero.stringChessType === 'hero'"-->
+<!--                                                        :tooltip-hide-equip="judgeTooltipHideEquip(earlyHero.dataChess)"-->
+<!--                                    >-->
+<!--                                    </component-champion>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; 中期阵容 &ndash;&gt;-->
+<!--                            <div class="lineup-stage" v-if="dataItem[detailKey].metaphaseMapChessList">-->
+<!--                                <div class="lineup-stage-name"><span>中期</span></div>-->
+<!--                                <div class="lineup-stage-list">-->
+<!--                                    <component-champion v-for="(metaphaseHero, metaphaseHeroIndex) in dataItem[detailKey].metaphaseMapChessList"-->
+<!--                                                        :key="'metaphaseHero_' + metaphaseHeroIndex"-->
+<!--                                                        :champion-data="metaphaseHero.dataChess"-->
+<!--                                                        v-if="metaphaseHero.dataChess && metaphaseHero.dataChess.chessId !== '99998'"-->
+<!--                                                        :is-respond-event="metaphaseHero.stringChessType === 'hero'"-->
+<!--                                                        :tooltip-hide-equip="judgeTooltipHideEquip(metaphaseHero.dataChess)">-->
+<!--                                    </component-champion>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <router-link :to="'/lineupDetail/' + dataItem.id + '/' + modeType + '/' + detailKey" class="btn-lineup-detail" @click.native="$PingClick('index', 'gotoDetail', '查看详情_' + dataItem.id)"><span>详情</span></router-link>-->
+<!--                        </div>-->
+<!--                        <div class="detail-equipment-wrap">-->
+<!--                            &lt;!&ndash; 抢装顺序 &ndash;&gt;-->
+<!--                            <div class="lineup-equipment-order" v-if="dataItem[detailKey].equipment_order_detail">-->
+<!--                                <div class="equipment-order-title"><span>抢装顺序</span></div>-->
+<!--                                <div class="equipment-order-list" v-for="(equip, equipIndex) in dataItem[detailKey].equipment_order_detail" :key="'equip_order_' + equipIndex">-->
+<!--                                    <div class="icon-lineup-arrow-right" v-if="equipIndex !== 0"></div>-->
+<!--                                    <component-equipment :equipment-data="equip"></component-equipment>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="detail-2">-->
+<!--                            &lt;!&ndash; 阵容站位 &ndash;&gt;-->
+<!--                            <div class="lineup-location">-->
+<!--                                <div class="location-champion" :class="['position' + location.origin.location.replace(',', '-')]" @mouseenter="showTooltip($event, location.dataChess)" @mouseleave="hideTooltip()" v-for="(location, locationIndex) in dataItem[detailKey].finalMapChess" :key="'chessboard_' + locationIndex">-->
+<!--                                    <svg viewBox="0 0 84 96" class="location-svg">-->
+<!--                                        <defs><clipPath id="myMask"><polygon points="184 24 226 -3.16413562e-15 268 24 268 72 226 96 184 72" transform="translate(-184, 0)"></polygon></clipPath></defs>-->
+<!--                                        <image :xlink:href="location.dataChess.$avatar" width="108" height="108" x="-8" y="-4" clip-path="url(#myMask)" transform="translate(0, 0)"></image>-->
+<!--                                        <path stroke="none" stroke-width="4" fill="rgba(27, 18, 60, 0)" d="M186,25.1606451 L186,70.8393549 L226,93.6964978 L266,70.8393549 L266,25.1606451 L226,2.30350221 L186,25.1606451 Z" transform="translate(-184, 0)" id="slot-overlay" :style="{ stroke: location.booleanCarry && '#fb903a' }"></path>-->
+<!--                                    </svg>-->
+<!--                                    <i class="icon-carry" v-if="location.booleanCarry"></i>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; 备选英雄 &ndash;&gt;-->
+<!--                            <div class="lineup-alternative" v-if="dataItem[detailKey].hero_replace_data && dataItem[detailKey].hero_replace_data.length > 0">-->
+<!--                                <div class="alternative-item" v-for="heroReplace in dataItem[detailKey].hero_replace_data">-->
+<!--                                    <div class="alternative-left">-->
+<!--                                        <component-champion v-for="(originHero, originHeroIndex) in heroReplace.origin" :key="'originHero_' + originHeroIndex" :champion-data="originHero" :tooltip-hide-equip="judgeTooltipHideEquip(originHero)"></component-champion>-->
+<!--                                    </div>-->
+<!--                                    <div class="icon-lineup-arrow-right"></div>-->
+<!--                                    <div class="alternative-right">-->
+<!--                                        <component-champion v-for="(replaceHero, replaceHeroIndex) in heroReplace.replace" :key="'replaceHero_' + replaceHeroIndex" :champion-data="replaceHero" :tooltip-hide-equip="judgeTooltipHideEquip(replaceHero)"></component-champion>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; 羁绊 &ndash;&gt;-->
+<!--                            <div class="lineup-synergy">-->
+<!--                                <component-synergy :class="synergy.isVanguard && 'vanguard'" :synergy-data="synergy" v-for="(synergy, synergyIndex) in dataItem[detailKey].contact" :key="'synergy_' + synergyIndex"></component-synergy>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; 收起按钮 &ndash;&gt;-->
+<!--                            <a href="javascript:;" class="btn-slide-up" @click.stop="switchExpand(dataItem.id)"><span>收起</span></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
             </div>
             <div  v-if="sideBarTag=='jobranking'">假装有羁绊排行</div>

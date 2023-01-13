@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "云顶之奕数据可视化",
+  "version": "1.0",
+  "description": "云顶之奕数据可视化",
+  "icons": {
+    "48": "static/img/logo48_48.png",
+    "16": "static/img/logo16_16.png"
+  },
+  "browser_action": {
+    "default_icon": "static/img/logo16_16.png",
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs"
+  ],
+  "content_security_policy": "style-src 'self' 'unsafe-inline';script-src 'self' 'unsafe-eval' ; object-src 'self' ;"
+}
